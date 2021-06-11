@@ -52,6 +52,7 @@ ENVIRONMENTS_FOR_TABLE = {
 }
 ENVIRONMENTS_SUBFIGURES = {
     "GridworldDD": "a",
+    "GridworldXP": "supp",
     "LunarLander": "c",
     "CartPole": "b",
 }
@@ -507,6 +508,8 @@ for environment_id, environment_fname in tqdm(environment_fnames.items(), positi
                 correls_plot = env.plot(custom_data=est_relevance, custom_colorbar=True, data_norm=TwoSlopeNorm(vcenter=0.2, vmin=0., vmax=np.ma.max(est_relevance)), data_colormap="RdGy_r", fontsize_startend=6)
                 plt.colorbar(correls_plot, cax=ax_cbar, orientation='vertical')
                 ax_cbar.yaxis.set_ticks_position("left")
+                if environment_id == "20200722_01":
+                    plt.plot([10], [1], marker="*", color="g")
             else:
                 fig = plt.figure(figsize=(FIG4bc_W, FIG4_H))
                 ax = fig.add_axes([FIG4bc_LEFT / FIG4bc_W, FIG4_BOTTOM / FIG4_H, FIG4bc_AX_WIDTH / FIG4bc_W, FIG1_HEIGHT / FIG4_H])
